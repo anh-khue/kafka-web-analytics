@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
 @SpringBootApplication
-@EnableBinding(AnalyticsBinding.class)
+@EnableBinding({PageViewsStreamsBinding.class, PageCountStreamsBinding.class})
 public class KafkaWebAnalyticsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KafkaWebAnalyticsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KafkaWebAnalyticsApplication.class, args);
+    }
 }

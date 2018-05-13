@@ -14,12 +14,13 @@ import org.springframework.stereotype.Component;
 public class PageViewEventProcessor {
 
     @StreamListener
-    @SendTo(AnalyticsBinding.PAGE_COUNT_OUT)
-    public KStream<String, Long> process(@Input(AnalyticsBinding.PAGE_VIEWS_IN) KStream<String, PageViewEvent> kStream) {
+    @SendTo(PageCountStreamsBinding.PAGE_COUNT_OUT)
+    public KStream<String, Long> process(
+            @Input(PageViewsStreamsBinding.PAGE_VIEWS_IN) KStream<String, PageViewEvent> kStream) {
         return kStream.filter((key, value) -> value.getDuration() > 10)
                 .map((key, value) -> new KeyValue<>(value.getPage(), "0"))
                 .groupByKey()
-                .count(Materialized.as(AnalyticsBinding.PAGE_COUNT_MATERIALIZED_VIEW))
+                .count(Materialized.as(PageCountStreamsBinding.PAGE_COUNT_MATERIALIZED_VIEW))
                 .toStream();
     }
 }

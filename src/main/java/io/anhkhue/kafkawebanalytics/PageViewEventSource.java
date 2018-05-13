@@ -18,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class PageViewEventSource implements ApplicationRunner {
 
-    private final AnalyticsBinding analyticsBinding;
+    private final PageViewsStreamsBinding pageViewsStreamsBinding;
 
-    public PageViewEventSource(AnalyticsBinding analyticsBinding) {
-        this.analyticsBinding = analyticsBinding;
+    public PageViewEventSource(PageViewsStreamsBinding pageViewsStreamsBinding) {
+        this.pageViewsStreamsBinding = pageViewsStreamsBinding;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class PageViewEventSource implements ApplicationRunner {
                     .build();
 
             try {
-                this.analyticsBinding.pageViewsOut().send(message);
+                this.pageViewsStreamsBinding.pageViewsOut().send(message);
                 log.info("Sending message: {}", message);
             } catch (Exception e) {
                 log.error(e.getMessage());

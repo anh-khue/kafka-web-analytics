@@ -7,19 +7,14 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface AnalyticsBinding {
+public interface PageViewsStreamsBinding {
 
     String PAGE_VIEWS_OUT = "pageViewsOut";
     String PAGE_VIEWS_IN = "pageViewsIn";
-
-    String PAGE_COUNT_MATERIALIZED_VIEW = "pageCountMaterializedView";
-
-    String PAGE_COUNT_OUT = "pageCountOut";
 
     @Input(PAGE_VIEWS_IN)
     KStream<String, PageViewEvent> pageViewsIn();
 
     @Output(PAGE_VIEWS_OUT)
     MessageChannel pageViewsOut();
-
 }
