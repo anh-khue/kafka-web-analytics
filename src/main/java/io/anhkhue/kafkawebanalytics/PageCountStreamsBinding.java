@@ -2,6 +2,7 @@ package io.anhkhue.kafkawebanalytics;
 
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
+import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,6 @@ public interface PageCountStreamsBinding {
     @Output(PAGE_COUNT_OUT)
     KStream<String, Long> pageCountOut();
 
-    @Output(PAGE_COUNT_IN)
+    @Input(PAGE_COUNT_IN)
     KTable<String, Long> pageCountIn();
 }
