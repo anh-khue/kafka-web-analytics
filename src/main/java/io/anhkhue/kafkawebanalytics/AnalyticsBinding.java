@@ -11,6 +11,7 @@ public interface AnalyticsBinding {
 
     String PAGE_VIEWS_OUT = "pageViewsOut";
     String PAGE_VIEWS_IN = "pageViewsIn";
+    String PAGE_COUNT_MATERIALIZED_VIEW = "pageCountMaterializedView";
 
     @Input(PAGE_VIEWS_IN)
     KStream<String, PageViewEvent> pageViewsIn();
