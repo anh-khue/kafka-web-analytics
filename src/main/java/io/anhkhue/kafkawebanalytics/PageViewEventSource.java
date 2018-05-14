@@ -8,7 +8,6 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Executors;
@@ -27,8 +26,8 @@ public class PageViewEventSource implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        List<String> names = Arrays.asList("Anh Khue", "Bill Gates", "Steve Jobs", "Elon Musk", "Tony Stark", "Kobe");
-        List<String> pages = Arrays.asList("spring.io", "github.com", "kafka.apache.org", "redhat.com", "jetbrains.com");
+        List<String> names = List.of("Anh Khue", "Bill Gates", "Steve Jobs", "Elon Musk", "Tony Stark", "Kobe");
+        List<String> pages = List.of("spring.io", "github.com", "kafka.apache.org", "redhat.com", "jetbrains.com");
 
         Runnable runnable = () -> {
             String randomName = names.get(new Random().nextInt(names.size()));
